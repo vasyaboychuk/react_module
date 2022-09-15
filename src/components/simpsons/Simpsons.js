@@ -7,7 +7,7 @@ import './Simpsons.css'
 function Simpsons() {
     return (
         <div className={'wrap'}>
-            {simpsons.map(simpson => <Simpson simpson={simpson}/>)}
+            {simpsons.map((simpson,index) => <Simpson key={index} simpson={simpson}/>)}
 
         </div>
     );

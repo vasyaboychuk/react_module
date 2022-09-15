@@ -5,7 +5,7 @@ import Characters from "./components/rickandmortie/characters/Characters";
 
 function App() {
   return (<div>
-       <Simpsons/>,
+       <Simpsons/>
           <Characters/>
 
   </div>
