@@ -1,26 +1,16 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Users} from "./components/task1/Users";
+import Launches from "./components/task2/Launches";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    return (
+        <div>
+            <Users/>
+            <Launches/>
 
-    </div>
-  );
+        </div>
+    );
 }
 
 export default App;
