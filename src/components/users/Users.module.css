@@ -1,0 +1,9 @@
+.Users{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.Form{
+    display: flex;
+    justify-content: center;
+}
