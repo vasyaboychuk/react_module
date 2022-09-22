@@ -13,6 +13,7 @@ function Users() {
     useEffect(() => {
         userService.getAll()
             .then(({data}) => setUsers(data));
+
     }, []);
 
 

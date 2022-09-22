@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const userValidator = Joi.object({
-    id: Joi.number().min(1).max(1000000).required(),
+   
     name: Joi.string().regex(/^[a-zA-Zа-яА-Я]{1,10}$/).required()
         .messages({'string.pattern.base':'неправильно введена інформація'}),
     username: Joi.string().regex(/^[a-zA-Zа-яА-Я]{1,10}$/).required(),

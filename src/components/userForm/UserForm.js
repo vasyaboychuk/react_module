@@ -17,8 +17,7 @@ function UserForm({setUsers}) {
 
     return (
         <form  onSubmit={handleSubmit(submit)}>
-            <input type={"text"} placeholder={'id'} {...register('id')}/>
-            {errors.id && <span>{errors.id.message}</span>}
+
             <input type={"text"} placeholder={'name'} {...register('name')}/>
             {errors.name && <span>{errors.name.message}</span>}
             <input type={"text"} placeholder={'username'} {...register('username')}/>
