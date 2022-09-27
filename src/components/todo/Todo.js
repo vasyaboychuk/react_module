@@ -1,17 +1,13 @@
-
-
 function Todo({todo}) {
-    const {id, title, completed} = todo;
+    const{id,title,completed}=todo
 
     return (
         <div>
-
-            <h3>id: {id} </h3>
-            <h3>title: {title}</h3>
-            <h3>status: {completed}</h3>
-
+            <div>Id: {id}</div>
+            <div>Title: {title}</div>
+            <div>Status: {completed}</div>
         </div>
-    );
+    )
 }
 
-export default Todo;
+export {Todo};

@@ -1,20 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {apiService} from "../../services";
-import Todo from "../todo/Todo";
+import {useEffect, useState} from "react";
+
+import {todosService} from "../../services";
+import {Todo} from "../todo/Todo";
 
 function Todos() {
+
     const [todos, setTodos] = useState([]);
 
-    useEffect(() => {
-        apiService.getTodos().then(value => setTodos(value.data))
-    }, []);
+    useEffect(()=>{
+
+        todosService.getAll().then(({data}) => setTodos(data));
+
+    },[])
 
     return (
         <div>
-            {todos.map(todo => (<Todo key={todo.id} todo={todo}/>))}
-
+            {
+                todos.map(todo => <Todo key={todo.id} todo={todo}/>)
+            }
         </div>
     );
 }
 
-export default Todos;
+export {Todos};

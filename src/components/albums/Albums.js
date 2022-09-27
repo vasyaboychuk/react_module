@@ -1,22 +1,24 @@
 import {useEffect, useState} from "react";
 
-import {apiService} from "../../services";
-import Album from "../album/Album";
+import {albumsService} from "../../services";
+import {Album} from "../album/Album";
 
 
 function Albums() {
-    const [albums, setAlbums] = useState([]);
+
+    const[albums,setAlbums]=useState([])
 
     useEffect(()=>{
-        apiService.getAlbums().then(value => setAlbums(value.data));
-    },[])
+
+         albumsService.getAll().then(({data}) => setAlbums(data));
+
+     },[])
 
     return (
         <div>
-            {albums.map(album=><Album key={album.id} album={album}/>)}
-
+            {albums.map(album => <Album key={album.id} album={album}/>)}
         </div>
     );
 }
 
-export default Albums;
+export {Albums};

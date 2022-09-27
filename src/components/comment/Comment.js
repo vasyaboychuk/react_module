@@ -1,23 +1,18 @@
 import {Link} from "react-router-dom";
 
-
 function Comment({comment}) {
 
-    const{id,name,email,body}=comment;
-
+    const {id, name, email, body} = comment;
 
     return (
         <div>
-            <h3>{id}</h3>
-            <h3>{name} </h3>
-            <h3>{email}</h3>
-            <h3>{body}</h3>
-            <Link  to={`/posts/${comment.id}`} state={{...comment}}>Comment</Link>
-
-
-
+            <div>id: {id}</div>
+            <div>Name: {name}</div>
+            <div>Email: {email}</div>
+            <div>{body}</div>
+            <Link to={comment.postId.toString()}>Get info</Link>
         </div>
-    );
+    )
 }
 
-export default Comment;
+export {Comment};

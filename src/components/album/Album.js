@@ -1,16 +1,12 @@
-
-
 function Album({album}) {
-
     const {id, title} = album;
 
     return (
         <div>
-            <h3>{id}</h3>
-            <h3>title: {title}</h3>
-
+            <div>id: {id}</div>
+            <div>{title}</div>
         </div>
-    );
+    )
 }
 
-export default Album;
+export {Album};
