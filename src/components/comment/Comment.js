@@ -2,14 +2,14 @@ import {Link} from "react-router-dom";
 
 function Comment({comment}) {
 
-    const {id, name, email, body} = comment;
+
 
     return (
         <div>
-            <div>id: {id}</div>
-            <div>Name: {name}</div>
-            <div>Email: {email}</div>
-            <div>{body}</div>
+            <div>id: {comment.id}</div>
+            <div>Name: {comment.name}</div>
+            <div>Email: {comment.email}</div>
+            <div>{comment.body}</div>
             <Link to={comment.postId.toString()}>Get info</Link>
         </div>
     )

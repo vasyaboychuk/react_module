@@ -12,9 +12,9 @@ function App() {
                 <Route path={'/'} element={<MainLayout/>}>
                     <Route path={'todos'} element={<TodosPage/>}/>
                     <Route path={'albums'} element={<AlbumsPage/>}/>
-                    <Route path={'comments'} element={<CommentsPage/>}/>
+                    <Route path={'comments'} element={<CommentsPage/>}>
                         <Route path={':postId'} element={<Posts/>}/>
-                    <Route/>
+                    </Route>
                 </Route>
 
 

@@ -1,9 +1,13 @@
-function Post(props) {
+function Post({post}) {
+
+
+
     return (
         <div>
-            Post
+            {post.id} ---{post.title}
+
         </div>
-    )
+    );
 }
 
 export {Post};
