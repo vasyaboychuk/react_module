@@ -24,6 +24,7 @@ function Car({car}) {
         <div className={css.Car}>
             <div>
 
+
                 <div>id:{id}</div>
                 <div>model: {model}</div>
                 <div>year: {year}</div>
