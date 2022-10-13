@@ -6,42 +6,42 @@ import {object} from "joi";
 
 const initialState={
     cars:[],
-    currentCar: null,
     loading:false,
-    error:null
+    error:null,
+    carForUpdate: null
 
 }
 const getAll = createAsyncThunk(
     'carSlice/getAll',
-    async (_, {rejectedWithValue}) => {
+    async (_, {rejectWithValue}) => {
         try {
             const {data} = await carService.getAll();
             return data;
         } catch (e) {
-            return rejectedWithValue(e.response.value)
+            return rejectWithValue(e.response.value)
         }
     }
 );
 const createCar=createAsyncThunk(
     'carSlice/createCar',
-    async (car,{rejectedWithValue})=>{
+    async ({car},{rejectWithValue})=>{
         try {
             const{data}=await carService.create(car)
             return data
         }catch (e){
-            return rejectedWithValue(e.response.data)
+            return rejectWithValue(e.response.data)
 
         }
     }
 )
 const updateById=createAsyncThunk(
-    'car/slice/updateById',
-    async ({car,id},{rejectedWithValue})=>{
+    'carSlice/updateById',
+    async ({car,id},{rejectWithValue})=>{
         try {
             const {data} = await carService.updateById(id, car);
             return data
         } catch (e){
-            return rejectedWithValue(e.response.data)
+            return rejectWithValue(e.response.data)
         }
     }
 )
@@ -51,9 +51,12 @@ const carSlice=createSlice({
     name: 'carSlice',
     initialState,
     reducers:{
-        deleteById:(state,action)=>{
-            const index=state.cars.findIndex(car=>car.id===action.payload)
-            state.cars.splice(index,1)
+        deleteById: (state, action) => {
+            const index = state.cars.findIndex(car => car.id === action.payload)
+            state.cars.splice(index, 1)
+        },
+        setCarForUpdate:(state, action)=>{
+            state.carForUpdate = action.payload;
         }
     },
     extraReducers: builder =>
@@ -62,21 +65,22 @@ const carSlice=createSlice({
                 state.cars = action.payload
             })
             .addCase(createCar.fulfilled, (state, action) => {
-                state.cars = [action.payload, ...state.cars];
+                state.cars.push(action.payload)
             })
             .addCase(updateById.fulfilled,(state,action)=>{
-                const index = state.cars.findIndex(car => car.id === action.payload.id);
-                Object.assign(state.cars[index],action.payload)
-                state.currentCar=null
+               const findCar= state.cars.find(value=>value.id===action.payload.id )
+                Object.assign(findCar,action.payload)
             })
 
 })
-const {reducer: carReducer, actions: {deleteById}} = carSlice;
+const {reducer: carReducer, actions: {deleteById,setCarForUpdate}} = carSlice;
 
 const carActions={
     deleteById,
     getAll,
     createCar,
-    updateById
+    updateById,
+    setCarForUpdate
 }
+
 export {carActions, carReducer};
