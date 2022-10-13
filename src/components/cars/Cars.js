@@ -8,6 +8,7 @@ import {Car} from "../car/Car";
 function Cars() {
 
     const {cars} = useSelector(state => state.carReducer);
+
     const dispatch = useDispatch();
 
     useEffect(()=>{

@@ -6,19 +6,13 @@ import {carActions} from "../../redux";
 function Car({car}) {
     const{id,model,year,price}=car
     const dispatch=useDispatch()
-    const {currentCar}=useSelector(state => state.carReducer)
+
+
 
     const deleteCar=()=>{
         dispatch(carActions.deleteById(id))
     }
 
-    const updateCar=()=>{
-
-        if(!currentCar||currentCar.id!==id){
-            dispatch(carActions.updateById(car))
-    }else{
-        dispatch(carActions.updateById(null))
-    }}
 
     return (
         <div className={css.Car}>
@@ -33,7 +27,7 @@ function Car({car}) {
             <div>
 
                 <button onClick={deleteCar}>delete</button>
-                <button onClick={updateCar}>update</button>
+                <button onClick={()=>dispatch(carActions.setCarForUpdate(car))}>update</button>
             </div>
 
         </div>
