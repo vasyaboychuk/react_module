@@ -1,7 +1,9 @@
-function Cars(props) {
+import {Car} from "../Car/Car";
+
+function Cars({cars}) {
     return (
         <div>
-            Cars
+            {cars.map(car=><Car car={car} key={car.id}/>)}
         </div>
     )
 }
