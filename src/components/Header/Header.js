@@ -2,18 +2,18 @@ import {useNavigate} from "react-router-dom";
 
 import css from './Header.module.css';
 
-function Header(props) {
-    const navigate= useNavigate()
+
+const Header = () => {
+    const navigate = useNavigate();
 
     return (
         <div className={css.Header}>
             <div className={css.btns}>
-
-                <button onClick={() => navigate('/login')}>LOGIN</button>
-                <button onClick={() => navigate('/register')}>REGISTER</button>
+                <button onClick={() => navigate('/login')}>Login</button>
+                <button onClick={() => navigate('/register')}>Register</button>
             </div>
         </div>
     );
-}
+};
 
 export {Header};
