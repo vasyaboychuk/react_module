@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import {useForm} from "react-hook-form";
+import axios from "axios";
+import {useEffect, useState} from "react";
 
-function App() {
+const App = () => {
+  const {register, handleSubmit} = useForm({defaultValues:{id:1}});
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users').then(({data}) => setUsers(data))
+  }, [])
+
+  const submit = async ({id}) => {
+    const {data} = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+    setUser(data)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <form onChange={handleSubmit(submit)}>
+          <select {...register('id')}>
+            {users.map(user => (
+                <option key={user.id} value={user.id}>{user.name}</option>
+            ))}
+          </select>
+          {/*<button>getInfo</button>*/}
+        </form>
+        {user && <div>{JSON.stringify(user)}</div>}
+      </div>
   );
-}
+};
 
-export default App;
+export {App};
